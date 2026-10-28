@@ -1,4 +1,4 @@
-# Linvell 0.1.2 guide
+# Linvell 0.1.3 guide
 
 ## SSH remote workspaces
 
@@ -6,7 +6,7 @@ Open File → Connect to SSH Host, or search for Connect to SSH Host in the comm
 
 Choose a host, enter a remote folder path and double-click folders or files. Command-P searches filenames below the current remote folder, up to 20,000 files, excluding common generated directories.
 
-The remote host needs a POSIX shell and Python 3 for the file protocol. Linvell does not install a persistent server. If authentication or host-key verification is required, use the SSH Terminal button, complete the normal SSH prompts yourself, then refresh the file browser.
+The remote host needs a POSIX shell and Python 3 for the file protocol. Linvell does not install a persistent server. Use SSH Terminal for first-time host-key confirmation. File operations use non-interactive SSH: configure a usable key, SSH agent or your own ControlMaster connection. Linvell does not store SSH passwords.
 
 Command-N creates a new remote file. Command-S saves to the original remote path. Encoding and line endings are preserved, and a changed remote file blocks replacement. Remote editing currently allows files up to 16 MiB; local editing has a separate large-file path. Temporary working copies stay in a protected local temporary folder.
 
