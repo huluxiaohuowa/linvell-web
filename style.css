@@ -56,7 +56,4 @@
 .home .aurora-ribbon{position:absolute;width:110vw;height:46vh;left:-15%;top:28%;border-radius:50%;pointer-events:none;background:radial-gradient(ellipse at center,#48ffc133,#18d1a51f 38%,transparent 70%);filter:blur(16px);transform:rotate(-24deg);animation:ribbon-flow 5s cubic-bezier(.45,0,.55,1) infinite alternate}
 @keyframes ribbon-flow{from{transform:translate3d(-18%,-18%,0) rotate(-30deg);opacity:.45}to{transform:translate3d(25%,35%,0) rotate(-10deg);opacity:1}}
 .home .site-footer{gap:24px;flex-wrap:wrap}
-#motion-toggle{border:1px solid #c5ffe84d;border-radius:999px;padding:8px 12px;background:#0b2d25b3;color:#d5f8e7;font:inherit;font-size:14px;cursor:pointer}
-.home.effects-paused .aurora,.home.effects-paused .aurora-ribbon{animation-play-state:paused!important}
-@media(prefers-reduced-motion:reduce){.home .aurora-ribbon{animation:none}.home.effects-enabled .aurora-one{animation:emerald-drift 6s cubic-bezier(.45,0,.55,1) infinite alternate!important}.home.effects-enabled .aurora-two{animation:emerald-drift 8s cubic-bezier(.45,0,.55,1) -5s infinite alternate-reverse!important}.home.effects-enabled .aurora-ribbon{animation:ribbon-flow 5s cubic-bezier(.45,0,.55,1) infinite alternate!important}}
-.home .effect-control{margin-top:16px} .home .effect-control button{font-size:12px;padding:8px 12px}
+@media(prefers-reduced-motion:reduce){.home .aurora-ribbon{animation:none}.home .aurora-one{animation:emerald-drift 6s cubic-bezier(.45,0,.55,1) infinite alternate!important}.home .aurora-two{animation:emerald-drift 8s cubic-bezier(.45,0,.55,1) -5s infinite alternate-reverse!important}.home .aurora-ribbon{animation:ribbon-flow 5s cubic-bezier(.45,0,.55,1) infinite alternate!important}}
