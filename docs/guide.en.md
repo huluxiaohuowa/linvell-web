@@ -1,4 +1,4 @@
-# Linvell 0.1.4 guide
+# Linvell 0.1.5 guide
 
 ## Startup workspace
 
@@ -34,7 +34,7 @@ Stage and Unstage affect the selected file. For a tracked text diff, choose a hu
 
 Commit Graph draws actual parent links, branch divergence and merge nodes for up to 150 commits across all refs, with branch/tag labels. Select a commit to read its metadata and patch. Double-click a branch to switch; Branches also creates a named branch.
 
-The Git panel currently manages local checkouts. This release does not provide all Sublime Merge history-rewriting operations or a three-way conflict editor. Remote build-machine Git operations are not performed by the SSH file workflow.
+The Git panel manages local and SSH workspaces using the same interface. Remote operations use Git and existing SSH authentication on the selected host. This release does not provide all Sublime Merge history-rewriting operations or a three-way conflict editor. Git commands are issued only by the Git workflow; opening or expanding a file tree does not execute them.
 
 ## Multiple selections and column editing
 
@@ -86,3 +86,8 @@ Markdown source and its right preview scroll together in both directions. Previe
 | Toggle line comment | ⌘/ |
 | Indent / outdent | ⌘] / ⌘[ |
 | Insert line below / above | ⌘Enter / ⇧⌘Enter |
+
+
+## Folder selection and display pacing
+
+Select a remote child folder and Open targets that child directly. Entering it first produces the same target. Native scrolling and terminal updates follow the window display cadence, with additional scheduling stopped after interaction. A current 120 Hz screen measured about 8.33 ms between display callbacks; this is not a guarantee that every content frame is presented at 120 FPS. System power and load policies still apply.
