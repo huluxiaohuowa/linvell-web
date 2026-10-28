@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://linvell.fuluwa.top/sitemap.xml
