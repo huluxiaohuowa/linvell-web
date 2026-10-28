@@ -57,3 +57,6 @@
 @keyframes ribbon-flow{from{transform:translate3d(-18%,-18%,0) rotate(-30deg);opacity:.45}to{transform:translate3d(25%,35%,0) rotate(-10deg);opacity:1}}
 .home .site-footer{gap:24px;flex-wrap:wrap}
 @media(prefers-reduced-motion:reduce){.home .aurora-ribbon{animation:none}.home .aurora-one{animation:emerald-drift 6s cubic-bezier(.45,0,.55,1) infinite alternate!important}.home .aurora-two{animation:emerald-drift 8s cubic-bezier(.45,0,.55,1) -5s infinite alternate-reverse!important}.home .aurora-ribbon{animation:ribbon-flow 5s cubic-bezier(.45,0,.55,1) infinite alternate!important}}
+
+/* User guide */
+.guide section{scroll-margin-top:100px;margin-block:54px}.guide-toc{display:flex;flex-wrap:wrap;gap:10px 20px;padding:22px 0;border-block:1px solid #8aaca540}.guide table{width:100%;border-collapse:collapse}.guide th,.guide td{text-align:left;padding:12px;border-bottom:1px solid #8aaca540}.guide kbd{white-space:nowrap;font:inherit}.guide p{line-height:1.8}
