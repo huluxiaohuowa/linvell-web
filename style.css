@@ -60,3 +60,8 @@
 
 /* User guide */
 .guide section{scroll-margin-top:100px;margin-block:54px}.guide-toc{display:flex;flex-wrap:wrap;gap:10px 20px;padding:22px 0;border-block:1px solid #8aaca540}.guide table{width:100%;border-collapse:collapse}.guide th,.guide td{text-align:left;padding:12px;border-bottom:1px solid #8aaca540}.guide kbd{white-space:nowrap;font:inherit}.guide p{line-height:1.8}
+
+/* Plugin API examples preserve indentation and scroll within narrow viewports. */
+.plugin-guide pre{overflow-x:auto;max-width:100%;padding:20px;border:1px solid var(--line);border-radius:8px;background:var(--panel,#edf1eb);font-size:14px;line-height:1.65;tab-size:2}.plugin-guide code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}.plugin-guide pre code{overflow-wrap:normal}.plugin-guide .guide-toc{display:flex;flex-wrap:wrap;gap:12px 20px}.plugin-guide p{overflow-wrap:anywhere}
+@media(max-width:600px){.plugin-guide pre{padding:12px;font-size:12px}.site-header:has(+ .plugin-guide) nav{gap:10px;flex-wrap:wrap;justify-content:flex-end}}
+@media(max-width:600px){.site-header,.home .site-header{flex-wrap:wrap;justify-content:center;column-gap:16px;row-gap:8px}.site-header nav,.home .site-header nav{flex-shrink:1;flex-wrap:wrap;justify-content:center;gap:8px 14px}}
