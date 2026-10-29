@@ -1,5 +1,9 @@
 # Linvell 0.1.7 — detailed guide
 
+## Source editing
+
+Swift-native lexical highlighting and bracket matching ignore comments and strings. Fold braces, parentheses, Python indentation, HTML/XML tags and common keyword blocks using the gutter arrows or Option-Command-[ / ]. Command-K Command-0 folds all; Command-K Command-J unfolds all. Folding does not alter file contents. Newlines follow language and indentation settings. Settings → Editor adds Relative line numbers, keeping an absolute number on the current line. All these features share the same local/SSH document implementation.
+
 ## Auto-save
 
 Enable **Settings → Editor → Automatically save changes**. Existing local and SSH files save about one second after typing stops, preserving encoding and line endings. Untitled files need Save As first. An unsaved tab shows a filled dot in the close X's footprint; successful saving restores the X. External changes stop automatic saving without overwriting them. Edits made while a save is running remain dirty. IME composition is not saved mid-composition.
