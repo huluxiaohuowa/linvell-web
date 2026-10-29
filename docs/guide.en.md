@@ -18,7 +18,7 @@ The remote host needs a POSIX shell and Python 3 for the file protocol. Linvell 
 
 Command-N creates a new remote file. Command-S saves to the original remote path. Encoding and line endings are preserved, and a changed remote file blocks replacement. Remote editing currently allows files up to 16 MiB; local editing has a separate large-file path. Temporary working copies stay in a protected local temporary folder.
 
-This workflow provides remote files, a terminal, tasks and preview forwarding. It does not run VS Code extensions, Dev Containers or a remote language-server/debug-adapter host.
+This workflow provides remote files, a terminal, tasks and preview forwarding. It does not run VS Code extensions, Dev Containers or a debug-adapter host. Installed language servers on the host are supported.
 
 ## Run, stop, logs and web preview
 
@@ -95,3 +95,8 @@ Markdown source and its right preview scroll together in both directions. Previe
 ## Folder selection and display pacing
 
 Select a remote child folder and Open targets that child directly. Entering it first produces the same target. Native scroll views opt into AppKit responsive scrolling, and terminal display work uses a window display link. Display callback timing alone does not establish presented scrolling FPS. The directory cache above reduces network waiting and redundant row reloads; sustained high-refresh presentation remains under investigation.
+
+
+## 0.1.7 source editing, language tools and submodules
+
+See the [0.1.7 detailed guide](guide-0.1.7.en.md). Gutter arrows fold code; Option-Command-[ / ] fold/unfold, Command-K Command-0 / Command-J fold/unfold all. Settings adds relative line numbers. Failed GitHub requests try multiple acceleration endpoints without bypassing checksum/signature checks.
