@@ -1,8 +1,12 @@
-# Linvell 0.1.5 guide
+# Linvell 0.1.6 guide
 
 ## Startup workspace
 
 Choose Empty window or Restore last workspace in Settings → Appearance → Startup. Restore reopens the last local folder, project or SSH remote folder using the current SSH configuration and authentication. A file or folder opened from Finder takes priority and does not create another restored default window. Choosing an empty window keeps the last workspace record. Startup choices and workspace paths stay on this Mac. The activity bar marks its selection with a tinted background and side indicator.
+
+## Cached remote navigation
+
+Remote folder selection opens the selected child without entering it first. Directory indexes are shared by the chooser and explorer: reuse for 30 seconds, then show the cached listing while refreshing in the background. Unchanged results preserve rows and selection. Manual Refresh checks the server immediately; failed refreshes retain the last listing. File saves still check remote conflicts. These changes reduce network waiting; sustained 120 FPS presentation has not yet been verified.
 
 ## SSH remote workspaces
 
@@ -90,4 +94,4 @@ Markdown source and its right preview scroll together in both directions. Previe
 
 ## Folder selection and display pacing
 
-Select a remote child folder and Open targets that child directly. Entering it first produces the same target. Native scrolling and terminal updates follow the window display cadence, with additional scheduling stopped after interaction. A current 120 Hz screen measured about 8.33 ms between display callbacks; this is not a guarantee that every content frame is presented at 120 FPS. System power and load policies still apply.
+Select a remote child folder and Open targets that child directly. Entering it first produces the same target. Native scroll views opt into AppKit responsive scrolling, and terminal display work uses a window display link. Display callback timing alone does not establish presented scrolling FPS. The directory cache above reduces network waiting and redundant row reloads; sustained high-refresh presentation remains under investigation.
