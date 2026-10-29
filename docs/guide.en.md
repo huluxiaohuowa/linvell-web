@@ -38,7 +38,7 @@ Stage and Unstage affect the selected file. For a tracked text diff, choose a hu
 
 Commit Graph draws actual parent links, branch divergence and merge nodes for up to 150 commits across all refs, with branch/tag labels. Select a commit to read its metadata and patch. Double-click a branch to switch; Branches also creates a named branch.
 
-The Git panel manages local and SSH workspaces using the same interface. Remote operations use Git and existing SSH authentication on the selected host. This release does not provide all Sublime Merge history-rewriting operations or a three-way conflict editor. Git commands are issued only by the Git workflow; opening or expanding a file tree does not execute them.
+The Git panel manages local and SSH workspaces using the same interface. Remote operations use Git and existing SSH authentication on the selected host. Native operation forms and an interactive console provide additional history workflows; a graphical three-way conflict editor is not included. Git commands are issued only by the Git workflow; opening or expanding a file tree does not execute them.
 
 ## Multiple selections and column editing
 
