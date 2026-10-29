@@ -1,10 +1,10 @@
-# Linvell 0.1.5 guide
+# Linvell guide
 
 ## Startup workspace
 
 Choose Empty window or Restore last workspace in Settings → Appearance → Startup. Restore reopens the last local folder, project or SSH remote folder using the current SSH configuration and authentication. A file or folder opened from Finder takes priority and does not create another restored default window. Choosing an empty window keeps the last workspace record. Startup choices and workspace paths stay on this Mac. The activity bar marks its selection with a tinted background and side indicator.
 
-## Cached remote navigation
+## Cached remote navigation (0.1.6)
 
 Remote folder selection opens the selected child without entering it first. Directory indexes are shared by the chooser and explorer: reuse for 30 seconds, then show the cached listing while refreshing in the background. Unchanged results preserve rows and selection. Manual Refresh checks the server immediately; failed refreshes retain the last listing. File saves still check remote conflicts. These changes reduce network waiting; sustained 120 FPS presentation has not yet been verified.
 
