@@ -100,3 +100,11 @@ Select a remote child folder and Open targets that child directly. Entering it f
 ## 0.1.7 source editing, language tools and submodules
 
 See the [0.1.7 detailed guide](guide-0.1.7.en.md). Gutter arrows fold code; Option-Command-[ / ] fold/unfold, Command-K Command-0 / Command-J fold/unfold all. Settings adds relative line numbers. Failed GitHub requests try multiple acceleration endpoints without bypassing checksum/signature checks.
+
+## Native code intelligence and recent projects
+
+Code intelligence uses a native Swift language client: capability negotiation, full/incremental document synchronization, wire cancellation, file-change notifications, provider analysis progress, push/pull diagnostics and shared backend lifetime. Project Settings stays beside the project name for local and SSH folders; Project Tools reports on the selected host. Matching JavaScript/TypeScript profiles share one process. The last related document releases the backend and watchers. Project language-server settings can be stored under linvell.languageServerSettings in each language section of .linvell/settings.json.
+
+F12 opens definitions; Shift-F12 finds references. Option-Left/Right navigates back/forward, with Control-minus/Control-Shift-minus retained. Command-Shift-O searches document symbols; Command-T searches workspace symbols through language providers. Command-F12 opens implementations; Go also offers declarations and type definitions. Control-Space completes code; Command-Shift-Space shows parameter hints. F2 performs semantic rename, Option-Shift-F formats the document and Command-Shift-M opens Problems. Capability support depends on the selected server; import aliases retain their language-specific scope.
+
+Mouse hover cards never take keyboard focus and close on leaving the symbol, scrolling, typing or switching windows. Late SSH reads cannot reactivate an editor after navigation. Welcome shows up to twelve recent projects with their paths; SSH entries include a Remote prefix and host and reopen in the same window. The history stays on this Mac. Remote file watching runs in the background and unchanged indexes return a digest instead of retransmitting all metadata.

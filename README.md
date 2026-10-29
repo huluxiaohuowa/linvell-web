@@ -19,3 +19,5 @@ The homepage version, DMG link and release notes are resolved from GitHub’s la
 Run release-detection regressions with `node --test tests/releases.test.cjs`.
 
 On-demand project language services (0.1.8): [English](docs/language-services.en.md), [中文](docs/language-services.zh.md).
+
+Native code intelligence and recent projects (0.1.9): [English](docs/code-intelligence.en.md), [中文](docs/code-intelligence.zh.md).
