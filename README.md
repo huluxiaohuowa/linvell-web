@@ -17,3 +17,5 @@ Detailed 0.1.7 instructions: [English](docs/guide-0.1.7.en.md), [中文](docs/gu
 The homepage version, DMG link and release notes are resolved from GitHub’s latest stable Release at runtime. The page refreshes this metadata when opened, when brought back into view and every five minutes while visible. API failures keep a link to GitHub’s latest Release instead of a pinned old download. Publishing an application version requires no website commit or deployment.
 
 Run release-detection regressions with `node --test tests/releases.test.cjs`.
+
+On-demand project language services (0.1.8): [English](docs/language-services.en.md), [中文](docs/language-services.zh.md).
