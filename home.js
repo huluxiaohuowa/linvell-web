@@ -80,6 +80,7 @@
   const tabs = [...tour.querySelectorAll('[data-scene]')];
   const image = panel.querySelector('img'), link = panel.querySelector('a');
   const caption = panel.querySelector('.scene-caption'), rail = tour.querySelector('.scene-rail span');
+  rail.style.width = `${100 / tabs.length}%`;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let active = 0, request = 0;
   function renderCaption() {
