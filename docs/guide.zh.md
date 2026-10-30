@@ -1,5 +1,22 @@
 # Linvell 使用指南
 
+## 安装与更新
+
+需要先安装 Homebrew，支持 macOS 15.6 及以上。通过 Linvell 自建 tap 安装已签名、公证的 Universal 应用：
+
+```sh
+brew install --cask huluxiaohuowa/tap/linvell
+```
+
+升级：
+
+```sh
+brew update
+brew upgrade --cask huluxiaohuowa/tap/linvell
+```
+
+Homebrew 安装的版本检查所属 Cask 更新源，并通过 Homebrew 更新。也可从首页下载 DMG 手动安装，再使用应用内更新器。官方 Homebrew Cask 收录尚在等待中。
+
 ## 启动工作区
 
 在“设置 → 外观 → 启动”中选择“空白欢迎窗口”或“恢复上次的工作区”。恢复模式会重新打开上次的本地文件夹、项目或 SSH 远程文件夹；远程连接沿用当前 SSH 配置与认证。从 Finder 指定打开文件或文件夹时，优先打开该目标，不额外恢复另一个默认窗口。切换为空窗口不会删除上次的工作区记录。启动选择和工作区路径仅保存在本机。左侧活动栏使用底色和侧边指示条标记选中项。

@@ -1,5 +1,22 @@
 # Linvell guide
 
+## Install and update
+
+Requires Homebrew and macOS 15.6 or later. Install the signed, notarized Universal app from the Linvell-maintained tap:
+
+```sh
+brew install --cask huluxiaohuowa/tap/linvell
+```
+
+Upgrade:
+
+```sh
+brew update
+brew upgrade --cask huluxiaohuowa/tap/linvell
+```
+
+Homebrew installations check their Cask source and install updates through Homebrew. For manual installation, download the DMG from the homepage and use the in-app updater. Official Homebrew Cask inclusion is pending.
+
 ## Startup workspace
 
 Choose Empty window or Restore last workspace in Settings → Appearance → Startup. Restore reopens the last local folder, project or SSH remote folder using the current SSH configuration and authentication. A file or folder opened from Finder takes priority and does not create another restored default window. Choosing an empty window keeps the last workspace record. Startup choices and workspace paths stay on this Mac. The activity bar marks its selection with a tinted background and side indicator.

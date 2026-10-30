@@ -1,5 +1,22 @@
 # Linvell official website
 
+## Install Linvell / 安装 Linvell
+
+Requires Homebrew and macOS 15.6+. / 需要先安装 Homebrew，支持 macOS 15.6 及以上。
+
+```sh
+brew install --cask huluxiaohuowa/tap/linvell
+```
+
+Upgrade / 升级：
+
+```sh
+brew update
+brew upgrade --cask huluxiaohuowa/tap/linvell
+```
+
+The Linvell-maintained tap provides the signed, notarized Universal app. GitHub Releases automatically update the tap. / Linvell 自建 tap 提供已签名、公证的 Universal 应用，并随 GitHub Release 自动更新。
+
 Static HTML/CSS/JavaScript. No build step, dependencies or app-build workflow.
 
 Published by GitHub Pages from `main` at `/`, with the custom domain in `CNAME`. Application binaries are built and notarized on GitHub-hosted macOS CI in the Linvell repository and distributed separately through GitHub Releases.
