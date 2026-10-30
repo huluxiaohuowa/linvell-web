@@ -26,34 +26,17 @@
 
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const control = document.querySelector('.motion-toggle');
-  const label = control?.querySelector('[data-motion-label]');
-  let paused = false;
-  try { paused = localStorage.getItem('linvell-motion-paused') === 'true'; } catch {}
-  const render = () => {
-    document.body.classList.toggle('motion-paused', paused);
+  const renderMotion = () => {
     const backdrop = document.querySelector('.workspace-backdrop svg');
-    if (paused || reduced.matches || document.hidden) backdrop?.pauseAnimations?.();
+    if (reduced.matches) backdrop?.pauseAnimations?.();
     else backdrop?.unpauseAnimations?.();
-    control?.setAttribute('aria-pressed', String(paused));
-    document.dispatchEvent(new CustomEvent('linvell-motionchange', { detail: { paused } }));
-    if (label) label.textContent = document.documentElement.lang === 'zh-CN' ? (paused ? '播放演示' : '暂停演示') : (paused ? 'Play tour' : 'Pause tour');
   };
-  if (!paused && !reduced.matches) document.body.classList.add('motion-running');
-  control?.addEventListener('click', () => {
-    paused = !paused;
-    document.body.classList.remove('motion-running');
-    try { localStorage.setItem('linvell-motion-paused', String(paused)); } catch {}
-    render();
-  });
-  document.addEventListener('linvell-tourpause', () => { paused = true; render(); });
-  document.getElementById('language')?.addEventListener('click', render);
-  document.addEventListener('visibilitychange', () => { document.body.classList.toggle('tab-hidden', document.hidden); render(); });
+  if (!reduced.matches) document.body.classList.add('motion-running');
   reduced.addEventListener('change', () => {
     if (reduced.matches) document.body.classList.remove('motion-running');
-    render();
+    renderMotion();
   });
-  render();
+  renderMotion();
   if ('IntersectionObserver' in window) {
     const reveals = new IntersectionObserver(entries => {
       for (const entry of entries) if (entry.isIntersecting) {
@@ -98,7 +81,7 @@
   const image = panel.querySelector('img'), link = panel.querySelector('a');
   const caption = panel.querySelector('.scene-caption'), rail = tour.querySelector('.scene-rail span');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let active = 0, request = 0, visible = false;
+  let active = 0, request = 0;
   function renderCaption() {
     if (caption) caption.textContent = document.documentElement.lang === 'zh-CN' ? caption.dataset.zh : caption.dataset.en;
   }
@@ -123,7 +106,7 @@
     ], { duration: 500, easing: 'cubic-bezier(.22,1,.36,1)' });
   }
   tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => { document.dispatchEvent(new Event('linvell-tourpause')); show(index); });
+    tab.addEventListener('click', () => show(index));
     tab.addEventListener('keydown', event => {
       let next;
       if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
@@ -131,17 +114,12 @@
       else if (event.key === 'Home') next = 0;
       else if (event.key === 'End') next = tabs.length - 1;
       else return;
-      event.preventDefault(); document.dispatchEvent(new Event('linvell-tourpause'));
+      event.preventDefault();
       tabs[next].focus(); show(next, false);
     });
   });
-  if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
-    visible = entries.some(entry => entry.isIntersecting);
-  }, { threshold: .25 }).observe(panel);
-  else visible = true;
   setInterval(() => {
-    if (!visible || document.hidden || reduced.matches || document.body.classList.contains('motion-paused')) return;
-    if (tour.matches(':hover') || panel.matches(':hover') || tour.contains(document.activeElement) || panel.contains(document.activeElement) || document.querySelector('dialog[open]')) return;
+    if (document.hidden || reduced.matches) return;
     show((active + 1) % tabs.length);
   }, 5500);
   document.getElementById('language')?.addEventListener('click', renderCaption);
