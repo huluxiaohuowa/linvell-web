@@ -1,8 +1,8 @@
 :root {
-  --paper:#07120e; --surface:#12231b; --white:#0d1c15; --ink:#edf6ef; --muted:#b3c4b8; --green:#b1f4cf; --line:#31483b; --accent-ink:#103827;
+  --paper:#f3f5ec; --surface:#e5ecdf; --white:#fffef7; --ink:#1e3529; --muted:#52675b; --green:#296d4c; --line:#c5d3c5; --accent-ink:#f4fff6;
   --dark:#181818; --light-ink:#f5f5ef; --light-muted:#b7c3ba; --dark-line:#455049; --mint:#b1f4cf;
-  --heading-start:#ffffff; --heading-end:#a7c4b1; --clear:transparent; --glass:rgb(12 29 20 / .88); --shadow:rgb(0 0 0 / .3);
-  --aurora-green:#208959; --aurora-mint:#8eeab1; --aurora-deep:#0a5137; --aurora-glow:rgb(83 215 136 / .2); --aurora-edge:rgb(142 234 177 / .18);
+  --heading-start:#12261b; --heading-end:#596b5d; --clear:transparent; --glass:rgb(243 245 236 / .94); --shadow:rgb(27 54 37 / .12);
+  --stage-edge:rgb(46 110 75 / .24); --grid-line:rgb(46 110 75 / .055); --trace-line:rgb(46 110 75 / .18); --flow-copper:#b76a37; --copper-line:rgb(183 106 55 / .16);
   --font-body:Manrope,"PingFang SC",sans-serif; --motion:cubic-bezier(.22,1,.36,1);
   --container:1328px; --gap:32px; --gutter:48px;
   --space-xs:8px; --space-sm:12px; --space-md:16px; --space-lg:24px; --space-xl:32px; --space-2xl:48px; --space-3xl:64px; --space-4xl:96px;

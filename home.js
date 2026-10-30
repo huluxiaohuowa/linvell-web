@@ -32,8 +32,12 @@
   try { paused = localStorage.getItem('linvell-motion-paused') === 'true'; } catch {}
   const render = () => {
     document.body.classList.toggle('motion-paused', paused);
+    const backdrop = document.querySelector('.workspace-backdrop svg');
+    if (paused || reduced.matches || document.hidden) backdrop?.pauseAnimations?.();
+    else backdrop?.unpauseAnimations?.();
     control?.setAttribute('aria-pressed', String(paused));
-    if (label) label.textContent = document.documentElement.lang === 'zh-CN' ? (paused ? '播放动效' : '暂停动效') : (paused ? 'Play motion' : 'Pause motion');
+    document.dispatchEvent(new CustomEvent('linvell-motionchange', { detail: { paused } }));
+    if (label) label.textContent = document.documentElement.lang === 'zh-CN' ? (paused ? '播放演示' : '暂停演示') : (paused ? 'Play tour' : 'Pause tour');
   };
   if (!paused && !reduced.matches) document.body.classList.add('motion-running');
   control?.addEventListener('click', () => {
@@ -42,8 +46,9 @@
     try { localStorage.setItem('linvell-motion-paused', String(paused)); } catch {}
     render();
   });
+  document.addEventListener('linvell-tourpause', () => { paused = true; render(); });
   document.getElementById('language')?.addEventListener('click', render);
-  document.addEventListener('visibilitychange', () => document.body.classList.toggle('tab-hidden', document.hidden));
+  document.addEventListener('visibilitychange', () => { document.body.classList.toggle('tab-hidden', document.hidden); render(); });
   reduced.addEventListener('change', () => {
     if (reduced.matches) document.body.classList.remove('motion-running');
     render();
@@ -83,4 +88,61 @@
     close.textContent = document.documentElement.lang === 'zh-CN' ? '关闭' : 'Close';
     dialog.showModal();
   }));
+})();
+
+(() => {
+  const tour = document.querySelector('.workspace-tour');
+  const panel = document.getElementById('workspace-scene');
+  if (!tour || !panel) return;
+  const tabs = [...tour.querySelectorAll('[data-scene]')];
+  const image = panel.querySelector('img'), link = panel.querySelector('a');
+  const caption = panel.querySelector('.scene-caption'), rail = tour.querySelector('.scene-rail span');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let active = 0, request = 0, visible = false;
+  function renderCaption() {
+    if (caption) caption.textContent = document.documentElement.lang === 'zh-CN' ? caption.dataset.zh : caption.dataset.en;
+  }
+  async function show(index, animate = true) {
+    const tab = tabs[index], token = ++request;
+    tab.setAttribute('aria-busy', 'true');
+    const next = new Image(); next.src = tab.dataset.image;
+    try { await next.decode(); } catch { tab.removeAttribute('aria-busy'); return; }
+    tab.removeAttribute('aria-busy');
+    if (token !== request) return;
+    active = index;
+    tabs.forEach((item, i) => { item.setAttribute('aria-selected', String(i === index)); item.tabIndex = i === index ? 0 : -1; });
+    panel.setAttribute('aria-labelledby', tab.id);
+    rail.style.transform = `translateX(${index * 100}%)`;
+    image.getAnimations().forEach(a => a.cancel());
+    image.src = tab.dataset.image; image.alt = tab.dataset.alt; link.href = tab.dataset.image;
+    caption.dataset.en = tab.dataset.captionEn; caption.dataset.zh = tab.dataset.captionZh;
+    renderCaption();
+    if (animate && !reduced.matches) image.animate([
+      { opacity: .35, transform: 'translateX(12px)' },
+      { opacity: 1, transform: 'translateX(0)' }
+    ], { duration: 500, easing: 'cubic-bezier(.22,1,.36,1)' });
+  }
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => { document.dispatchEvent(new Event('linvell-tourpause')); show(index); });
+    tab.addEventListener('keydown', event => {
+      let next;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = tabs.length - 1;
+      else return;
+      event.preventDefault(); document.dispatchEvent(new Event('linvell-tourpause'));
+      tabs[next].focus(); show(next, false);
+    });
+  });
+  if ('IntersectionObserver' in window) new IntersectionObserver(entries => {
+    visible = entries.some(entry => entry.isIntersecting);
+  }, { threshold: .25 }).observe(panel);
+  else visible = true;
+  setInterval(() => {
+    if (!visible || document.hidden || reduced.matches || document.body.classList.contains('motion-paused')) return;
+    if (tour.matches(':hover') || panel.matches(':hover') || tour.contains(document.activeElement) || panel.contains(document.activeElement) || document.querySelector('dialog[open]')) return;
+    show((active + 1) % tabs.length);
+  }, 5500);
+  document.getElementById('language')?.addEventListener('click', renderCaption);
 })();

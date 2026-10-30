@@ -1,14 +1,14 @@
-/* Hallmark · shape: Workbench · genre: atmospheric · theme: brand · redesign: full
- * paper: #f5f5ef · accent: #245c45 · display: Manrope · body: Manrope · hero: Stage · nav: floating compact · footer: single colophon · signature: real Git history, preview and project tools with moving green light
+/* Hallmark · shape: Workbench · genre: modern-minimal · theme: brand · redesign: full
+ * paper: #f3f5ec · accent: #296d4c · display: Manrope · body: Manrope · hero: Stage · nav: floating compact · footer: single colophon · signature: a real native workspace progressing from preview to Git and project tools
  * axes: light/grotesk-sans/chromatic-green · posture: restrained · imagery: actual installed 0.2.0 captures · job: try · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H4 E4 S5 R5 V4 · weakest: H, kept the hero short and gave the real app most of the horizontal space */
 /* Hallmark · waive 2b · single neutral ramp on hero title · landing-page-design explicitly requires a neutral text gradient */
-/* Hallmark · waive 44c · hero includes every action at 1280x800 · lets the next feature heading enter the first screen instead of stretching an app capture */
+/* Hallmark · waive 44c · headline and download fit the first screen · the large real workspace capture intentionally continues below the fold */
 /* Hallmark · waive 77 · final download is a short action band · the full product argument precedes it and does not need repeating */
-/* Hallmark · user motion request · moving green light and translucent surfaces are explicitly requested for this revision. */
-/* Hallmark · user-directed motion revision: animated brand background replaces the flat-paper restriction; six distinct installed-app feature views replace repeated editor imagery. Previous review applies only to the previous revision. */
+/* Hallmark · product motion revision · Motion explains the real preview, Git and project-tool workflow. */
+/* Hallmark · imagery: six distinct captures of the installed application, joined by an interactive product workflow. */
 /* Hallmark · waive 79 · final raster has Git screenshot from y386 through the fold · animated product is missed by the measurement during its entrance; settled image is checked separately */
-/* Hallmark · waive 81 · user explicitly requests a moving branded background · light ellipses are decorative background geometry and are never presented as product pictures */
+/* Hallmark · waive 80 · user requests moving branch geometry in the background · decorative paths do not substitute for the six real product captures */
 @import url('tokens.css');
 @font-face{font-family:Manrope;src:url('assets/manrope.woff2') format('woff2');font-weight:400 700;font-style:normal;font-display:swap}
 *{box-sizing:border-box}
@@ -68,22 +68,16 @@ figcaption{margin-top:var(--space-md);font-size:var(--text-sm);line-height:20px;
 details:not([open]) p{display:none}
 @media(max-width:640px){html:not(.js) .site-header{flex-wrap:wrap}html:not(.js) nav{display:flex;flex-wrap:wrap}html:not(.js) .menu-toggle{display:none}}
 
-/* Motion revision: the user requested an animated background and distinct feature captures. */
+/* Product motion and real feature captures. */
 body{position:relative;isolation:isolate}
 html{color-scheme:dark;background:var(--paper)}
-.ambient{position:fixed;inset:0;z-index:-1;overflow:clip;pointer-events:none;background:var(--paper)}
-.aurora{position:absolute;border-radius:50%;filter:blur(64px);will-change:transform;opacity:.5}
-.aurora-a{width:1000px;height:580px;left:-320px;top:-280px;background:radial-gradient(ellipse,var(--aurora-green),var(--clear) 70%);animation:aurora-drift-a 18s var(--motion) infinite alternate}
-.aurora-b{width:1000px;height:720px;right:-400px;top:64px;background:radial-gradient(ellipse,var(--aurora-deep),var(--clear) 70%);animation:aurora-drift-b 24s var(--motion) infinite alternate}
-.aurora-c{width:800px;height:480px;left:20%;bottom:-240px;background:radial-gradient(ellipse,var(--aurora-green),var(--clear) 70%);opacity:.24;animation:aurora-drift-a 22s var(--motion) infinite alternate-reverse}
-.light-ribbon{position:absolute;width:1600px;height:640px;border:64px solid var(--aurora-edge);border-radius:50%;left:calc(50% - 800px);top:180px;transform:rotate(-26deg);filter:blur(32px);opacity:.7;animation:ribbon-flow 20s var(--motion) infinite alternate;will-change:transform}
 .brand .wordmark{filter:brightness(0) invert(1)}
 .primary{background:var(--green);color:var(--accent-ink)}.primary:hover{color:var(--accent-ink)}
 .hero{display:flex;flex-direction:column;align-items:stretch;gap:var(--space-2xl);min-height:0;padding-block:80px var(--space-3xl)}
 .hero-copy{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--space-xl);align-items:center}
 .hero-support{justify-self:end;width:100%;max-width:384px}.hero-support .description{margin-top:0}.hero-support .actions{margin-top:var(--space-lg)}
 .product{width:100%;max-width:1120px;align-self:center;perspective:1400px}
-.product a{border-radius:16px;box-shadow:0 32px 80px var(--shadow),0 0 0 1px var(--aurora-edge)}
+.product a{border-radius:16px;box-shadow:0 32px 80px var(--shadow),0 0 0 1px var(--stage-edge)}
 .product img{width:100%;height:auto}
 .product figcaption{display:flex;justify-content:space-between;gap:var(--space-md);font-size:var(--text-sm)}
 .benefits article,.detail,.terminal,.questions{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(16px)}
@@ -99,9 +93,6 @@ html{color-scheme:dark;background:var(--paper)}
 .plugins-band{background:var(--glass);border-block:1px solid var(--line)}
 .motion-toggle{position:fixed;right:var(--space-lg);bottom:var(--space-lg);z-index:11;min-height:44px;padding:var(--space-xs) var(--space-md);border:1px solid var(--line);border-radius:9999px;color:var(--muted);background:var(--glass);backdrop-filter:blur(16px);font-size:var(--text-sm)}
 .motion-toggle:hover{color:var(--ink);border-color:var(--green)}
-@keyframes aurora-drift-a{from{transform:translate3d(-80px,-32px,0) rotate(-12deg) scale(1)}to{transform:translate3d(240px,160px,0) rotate(24deg) scale(1.25)}}
-@keyframes aurora-drift-b{from{transform:translate3d(120px,-96px,0) rotate(24deg)}to{transform:translate3d(-240px,200px,0) rotate(-18deg)}}
-@keyframes ribbon-flow{from{transform:translate3d(-160px,-80px,0) rotate(-28deg) scale(.94)}to{transform:translate3d(160px,160px,0) rotate(-8deg) scale(1.15)}}
 @keyframes hero-settle{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes shot-arrive{from{opacity:0;transform:translateY(24px) rotateX(3deg)}to{opacity:1;transform:translateY(0) rotateX(0)}}
 .motion-running .site-header{animation:hero-settle .8s var(--motion) both}
@@ -113,18 +104,47 @@ html{color-scheme:dark;background:var(--paper)}
 .js [data-reveal]{transition:opacity .8s var(--motion),transform .8s var(--motion)}
 .js [data-reveal]:not(.revealed){opacity:0;transform:translateY(24px)}
 .js [data-reveal].revealed{opacity:1;transform:translateY(0)}
-.motion-paused .aurora,.motion-paused .light-ribbon,.tab-hidden .aurora,.tab-hidden .light-ribbon{animation-play-state:paused}
 .motion-paused [data-reveal],.motion-paused .tagline .word{opacity:1!important;transform:none!important}
 .image-viewer{position:fixed;inset:0;margin:auto;padding:var(--space-lg);width:min(96%,1600px);max-width:none;max-height:94dvh;border:1px solid var(--line);border-radius:16px;background:var(--paper);color:var(--ink)}
 .image-viewer::backdrop{background:var(--shadow);backdrop-filter:blur(16px)}
 .image-viewer .viewer-close{float:right;border:1px solid var(--line);border-radius:8px;color:var(--ink);background:var(--surface);min-height:44px;padding:var(--space-xs) var(--space-md);margin-bottom:var(--space-md)}
 .image-viewer img{clear:both;max-height:calc(94dvh - 112px);width:100%;object-fit:contain}
 @media(hover:hover) and (pointer:fine){.feature-shot a,.detail a,.terminal a{transition:opacity .3s var(--motion)}.feature-shot a:hover,.detail a:hover,.terminal a:hover{opacity:.92}}
-@media(max-width:800px){.hero{padding-top:var(--space-2xl);gap:var(--space-xl)}.hero-copy{grid-template-columns:minmax(0,1fr);gap:var(--space-lg)}.hero-support{justify-self:start;max-width:480px}.hero h1{font-size:60px;line-height:1}.hero-support .description{max-width:480px}.hero-support .actions{margin-top:var(--space-md)}.editing-grid,.terminal-story{grid-template-columns:minmax(0,1fr)}.product figcaption{flex-direction:column;gap:var(--space-xs)}.light-ribbon{opacity:.4}.terminal-story{gap:var(--space-lg)}}
-@media(max-width:640px){.hero h1{font-size:48px}.motion-toggle{right:var(--space-md);bottom:var(--space-md)}.product a{border-radius:8px}.feature-shot,.detail,.terminal{padding:var(--space-xs)}.aurora{filter:blur(48px)}.aurora-a{left:-480px}.aurora-b{right:-560px}.image-viewer{padding:var(--space-sm)}.site-footer{padding-bottom:var(--space-4xl)}}
-@media(prefers-reduced-motion:reduce){.aurora,.light-ribbon{animation:none;will-change:auto}.motion-toggle{display:none}.js [data-reveal]:not(.revealed){opacity:1;transform:none}.motion-running .hero .product,.motion-running .site-header,.motion-running .hero h1,.motion-running .hero .description,.motion-running .hero .actions,.motion-running .hero .availability{animation:none}}
 
 .tools-story{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:var(--space-xl);align-items:center;padding-block:var(--space-2xl) var(--space-3xl)}.tools-story>div p{color:var(--muted);margin-top:var(--space-lg)}
 @media(max-width:800px){.tools-story{grid-template-columns:minmax(0,1fr)}.tools-story>div{grid-row:1}}
 
-html:not(.js) .aurora,html:not(.js) .light-ribbon{animation:none}html:not(.js) .motion-toggle{display:none}
+/* A project workspace: measured grid, branch geometry, and a real workflow tour. */
+.workspace-backdrop{position:absolute;inset:0 0 auto;height:1280px;z-index:-1;pointer-events:none;overflow:clip;background-image:linear-gradient(var(--grid-line) 1px,var(--clear) 1px),linear-gradient(90deg,var(--grid-line) 1px,var(--clear) 1px);background-size:80px 80px}
+.workspace-backdrop svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:var(--trace-line);stroke-width:1.5}
+.workspace-backdrop circle{fill:var(--paper);stroke:var(--green)}
+.hero{gap:var(--space-xl)}
+.workspace-tour{max-width:1120px;width:100%;align-self:center;margin-top:var(--space-md)}
+.scene-controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-md)}
+.scene-tab{min-height:48px;text-align:left;padding:var(--space-xs) var(--space-md);border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--muted);font-size:var(--text-sm);white-space:nowrap;transition:opacity .2s var(--motion)}
+.scene-tab[aria-selected=true]{color:var(--green);border-color:var(--green);background:var(--surface)}.scene-tab:hover{color:var(--ink)}
+.scene-rail{position:relative;height:1px;background:var(--line);margin-top:var(--space-md)}
+.scene-rail span{display:block;width:25%;height:2px;background:var(--green);transform:translateX(0);transition:transform .5s var(--motion)}
+.workspace-tour+.product{margin-top:var(--space-xs)}
+.workspace-tour+.product a{background:var(--surface);overflow:clip}
+.workspace-tour+.product img{aspect-ratio:2874/1722;object-fit:contain}
+.motion-paused [data-reveal]{transition:none}
+html:not(.js) .workspace-tour{display:none}html:not(.js) .motion-toggle{display:none}
+@media(max-width:640px){.scene-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-xs)}.scene-tab{padding:var(--space-xs) var(--space-sm);font-size:14px}.workspace-tour{margin-top:0}.workspace-backdrop{background-size:64px 64px}.workspace-backdrop svg{opacity:.5}}
+@media(prefers-reduced-motion:reduce){.scene-rail span{transition:none}}
+.scene-tab[aria-busy=true]{cursor:progress}
+@media(prefers-reduced-motion:reduce){.js [data-reveal]:not(.revealed){opacity:1;transform:none}.motion-running .hero .product,.motion-running .site-header,.motion-running .hero h1,.motion-running .hero .description,.motion-running .hero .actions,.motion-running .hero .availability{animation:none}}
+@media(max-width:800px){.hero{padding-top:var(--space-2xl);gap:var(--space-xl)}.hero-copy{grid-template-columns:minmax(0,1fr);gap:var(--space-lg)}.hero-support{justify-self:start;max-width:480px}.hero h1{font-size:60px;line-height:1}.hero-support .description{max-width:480px}.hero-support .actions{margin-top:var(--space-md)}.editing-grid,.terminal-story{grid-template-columns:minmax(0,1fr)}.product figcaption{flex-direction:column;gap:var(--space-xs)}.terminal-story{gap:var(--space-lg)}}
+@media(max-width:640px){.hero h1{font-size:48px}.motion-toggle{right:var(--space-md);bottom:var(--space-md)}.product a{border-radius:8px}.feature-shot,.detail,.terminal{padding:var(--space-xs)}.image-viewer{padding:var(--space-sm)}.site-footer{padding-bottom:var(--space-4xl)}}
+
+/* Light native workbench with moving branch nodes, no atmospheric glow. */
+html{color-scheme:light}.brand .wordmark{filter:none}
+.workspace-backdrop{position:fixed;inset:0;height:100%;background-size:80px 80px}
+.workspace-backdrop svg{height:100%;stroke-width:2}
+.workspace-backdrop .flow-route{stroke:var(--trace-line)}
+.workspace-backdrop .route-1,.workspace-backdrop .route-3{stroke:var(--copper-line)}
+.workspace-backdrop .flow-node{fill:var(--green);stroke:var(--paper);stroke-width:2;opacity:.7}
+.workspace-backdrop .node-1,.workspace-backdrop .node-3{fill:var(--flow-copper)}
+.plugins-band{background:var(--dark)}
+html:not(.js) .flow-node{display:none}
+@media(prefers-reduced-motion:reduce){.flow-node{display:none}}
