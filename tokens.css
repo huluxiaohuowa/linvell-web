@@ -1,0 +1,9 @@
+:root {
+  --paper:#f5f5ef; --surface:#e9ece5; --white:#fcfcf8; --ink:#192822; --muted:#50605a; --green:#245c45; --line:#d7dcd5;
+  --dark:#181818; --light-ink:#f5f5ef; --light-muted:#b7c3ba; --dark-line:#455049; --mint:#b1f4cf;
+  --heading-start:#000000; --heading-end:#666666; --clear:transparent; --glass:rgb(245 245 239 / .94); --shadow:rgb(25 40 34 / .12);
+  --font-body:Manrope,"PingFang SC",sans-serif; --motion:cubic-bezier(.22,1,.36,1);
+  --container:1328px; --gap:32px; --gutter:48px;
+  --space-xs:8px; --space-sm:12px; --space-md:16px; --space-lg:24px; --space-xl:32px; --space-2xl:48px; --space-3xl:64px; --space-4xl:96px;
+  --text-sm:.875rem; --text-md:1rem; --text-lead:1.125rem; --text-title:1.5rem; --text-section:3rem; --text-display:4.5rem;
+}
