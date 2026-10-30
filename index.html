@@ -3,14 +3,14 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Linvell | A native Mac editor. Room to think.</title>
 <meta name="description" content="A native macOS code editor built with Swift and AppKit. Discover multi-cursor editing, Vim modes, code intelligence, Git, SSH workspaces, a terminal and native plugins.">
-<meta name="theme-color" content="#f5f5ef"><meta property="og:title" content="Linvell | A native Mac editor. Room to think.">
+<meta name="theme-color" content="#07120e"><meta property="og:title" content="Linvell | A native Mac editor. Room to think.">
 <meta property="og:description" content="Keep your code, terminal, Git and remote work together in a native Mac workspace.">
-<meta property="og:image" content="https://linvell.fuluwa.top/assets/workspace-en.webp"><meta property="og:url" content="https://linvell.fuluwa.top/">
+<meta property="og:image" content="https://linvell.fuluwa.top/assets/git-graph-en.webp"><meta property="og:url" content="https://linvell.fuluwa.top/">
 <meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://linvell.fuluwa.top/"><link rel="icon" type="image/png" href="assets/icon.png"><link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="preload" href="assets/manrope.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="home.css?v=20261030"><script src="release.js" defer></script><script src="site.js" defer></script><script src="home.js" defer></script>
-</head><body class="home"><a data-en="Skip to content" data-zh="跳至正文" href="#main" class="skip">Skip to content</a>
+<link rel="stylesheet" href="home.css?v=20261030-motion2"><script src="release.js" defer></script><script src="site.js" defer></script><script src="home.js?v=20261030-motion2" defer></script>
+</head><body class="home"><div class="ambient" aria-hidden="true"><div class="aurora aurora-a"></div><div class="aurora aurora-b"></div><div class="aurora aurora-c"></div><div class="light-ribbon"></div></div><a data-en="Skip to content" data-zh="跳至正文" href="#main" class="skip">Skip to content</a>
 <header class="site-header"><a class="brand" href="/" aria-label="Linvell home" aria-current="page"><img src="assets/icon.png" width="36" height="36" alt=""><img class="wordmark" src="assets/wordmark.svg" width="124" height="37" alt="Linvell"></a>
 <button class="menu-toggle" type="button" aria-controls="navigation" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
 <nav id="navigation" aria-label="Main navigation"><a data-en="Features" data-zh="功能" href="#features" >Features</a><a data-en="Guide" data-zh="使用指南" href="guide.html" >Guide</a><a data-en="Plugins" data-zh="插件开发" href="plugins.html" >Plugins</a><a data-en="Development" data-zh="开发进展" href="development.html" >Development</a><button id="language" type="button" aria-label="切换至中文">中文</button>
@@ -18,15 +18,10 @@
 </header>
 <main id="main">
 <section class="hero container">
-<div class="intro">
-<h1 data-en="A Mac editor.&lt;br&gt;Room to think." data-zh="为 Mac 而生。&lt;br&gt;为灵感留白。" >A Mac editor.<br>Room to think.</h1>
-<p data-en="Native Swift. Your code, tools and ideas in one workspace." data-zh="原生 Swift 打造，让代码、工具和灵感在同一工作区相遇。" class="description">Native Swift. Your code, tools and ideas in one workspace.</p>
-<div class="actions"><a data-en="Download for macOS" data-zh="下载 macOS 版" href="https://github.com/huluxiaohuowa/Linvell/releases/latest" class="button primary" data-release="download">Download for macOS</a>
-</div>
-<p class="availability" data-release="availability">Latest release / macOS 15.6+</p>
-</div>
-<figure class="product" data-kind="product"><a href="assets/workspace-en.webp" aria-label="View full-size Linvell screenshot"><img src="assets/workspace-en.webp" width="2874" height="1722" alt="Linvell in English with the Fieldnotes Swift sample, native explorer, editor tabs and macOS window controls" fetchpriority="high"></a><figcaption>Linvell 0.2.0 / Swift &amp; AppKit / Apple Silicon &amp; Intel</figcaption>
-</figure>
+<div class="hero-copy"><div class="intro">
+<h1 data-en="A Mac editor.&lt;br&gt;Room to think." data-zh="为 Mac 而生。&lt;br&gt;为灵感留白。" >A Mac editor.<br>Room to think.</h1></div><div class="hero-support">
+<p data-en="Native Swift. Your code, previews and Git, in one workspace." data-zh="原生 Swift 打造。代码、实时预览与 Git，在同一工作区衔接。" class="description">Native Swift. Your code, previews and Git, in one workspace.</p><div class="actions"><a data-en="Download for macOS" data-zh="下载 macOS 版" href="https://github.com/huluxiaohuowa/Linvell/releases/latest" class="button primary" data-release="download">Download for macOS</a></div><p class="availability" data-release="availability">Latest release / macOS 15.6+</p></div></div>
+<figure class="product" data-kind="product"><a href="assets/git-graph-en.webp" aria-label="View Linvell Git commit graph full size"><img src="assets/git-graph-en.webp" width="2874" height="1722" alt="Linvell 0.2.0 in English showing a real Git branch graph, commit history and changes" fetchpriority="high"></a><figcaption><span data-en="Native Git history. Real branches, commits and diffs." data-zh="原生 Git 历史：真实的分支、提交与差异。" >Native Git history. Real branches, commits and diffs.</span><span>Linvell 0.2.0 / Apple Silicon &amp; Intel</span></figcaption></figure>
 </section>
 <section class="container foundation" id="features">
 <h2 data-en="Made for your Mac.&lt;br&gt;Ready for your way of working." data-zh="熟悉的 Mac 体验。&lt;br&gt;顺手的开发方式。" >Made for your Mac.<br>Ready for your way of working.</h2>
@@ -51,8 +46,7 @@
 <p data-en="From a filename to a symbol, without losing your place." data-zh="从文件名到符号定位，切换之后也能回到原处。" >From a filename to a symbol, without losing your place.</p>
 </div>
 <div class="editing-grid">
-<figure class="detail" data-kind="product"><img src="assets/workspace-en.webp" width="2874" height="1722" loading="lazy" alt="Actual Linvell Swift editor showing syntax highlighting and native code folding"><figcaption><span data-en="The installed 0.2.0 app, in English." data-zh="本机安装的 0.2.0，英文界面。" >The installed 0.2.0 app, in English.</span></figcaption>
-</figure>
+<figure class="detail" data-kind="product"><a href="assets/markdown-preview-en.webp" aria-label="English Linvell workspace with Markdown source and its rendered preview side by side"><img src="assets/markdown-preview-en.webp" width="2874" height="1722" loading="lazy" alt="English Linvell workspace with Markdown source and its rendered preview side by side"></a><figcaption><span data-en="Write the note. See the Markdown preview beside it." data-zh="一边写 Markdown，一边查看渲染结果。" >Write the note. See the Markdown preview beside it.</span></figcaption></figure>
 <div class="feature-list">
 <article>
 <h3 data-en="Edit more in one pass" data-zh="一次操作，多处修改" >Edit more in one pass</h3>
@@ -88,9 +82,9 @@
 <p data-en="Browse, edit and save remote files using system SSH configuration. Python 3 required remotely." data-zh="复用系统 SSH 配置浏览、编辑、保存远程文件；远端需有 Python 3。" >Browse, edit and save remote files using system SSH configuration. Python 3 required remotely.</p>
 </article>
 </div>
-<figure class="terminal" data-kind="product"><img src="assets/terminal-en.webp" width="2874" height="1722" loading="lazy" alt="Linvell English workspace with its integrated native terminal"><figcaption><span data-en="A real editor. A real terminal. One workspace." data-zh="真实编辑器，原生终端，同一工作区。" >A real editor. A real terminal. One workspace.</span></figcaption>
-</figure>
+<figure class="terminal" data-kind="product"><a href="assets/git-changes-en.webp" aria-label="Linvell Git changes interface with modified files, hunk staging controls and colored diff"><img src="assets/git-changes-en.webp" width="2874" height="1722" loading="lazy" alt="Linvell Git changes interface with modified files, hunk staging controls and colored diff"></a><figcaption><span data-en="Review a file, inspect a hunk, prepare a commit." data-zh="查看文件变更、检查差异块，准备提交。" >Review a file, inspect a hunk, prepare a commit.</span></figcaption></figure>
 </section>
+<section class="preview-showcase container" id="previews"><div class="section-head"><h2 data-en="Write it.&lt;br&gt;See it take shape." data-zh="写下代码，&lt;br&gt;看见它的模样。" >Write it.<br>See it take shape.</h2><p data-en="Render HTML beside its source. Keep a terminal within reach." data-zh="HTML 源码与渲染结果并排显示，终端随时可用。" >Render HTML beside its source. Keep a terminal within reach.</p></div><figure class="feature-shot" data-kind="product"><a href="assets/html-preview-en.webp" aria-label="Linvell showing formatted HTML code beside the actual rendered Fieldnotes webpage"><img src="assets/html-preview-en.webp" width="2874" height="1722" loading="lazy" alt="Linvell showing formatted HTML code beside the actual rendered Fieldnotes webpage"></a><figcaption><span data-en="HTML, rendered inside Linvell. This is the installed app." data-zh="在 Linvell 中直接渲染 HTML，画面来自本机安装版。" >HTML, rendered inside Linvell. This is the installed app.</span></figcaption></figure><div class="terminal-story"><div><h3 data-en="The command line,&lt;br&gt;without the detour." data-zh="命令行，&lt;br&gt;就在工作区里。" >The command line,<br>without the detour.</h3><p data-en="A native PTY terminal for local commands. Run tasks and inspect output beside your project." data-zh="通过原生 PTY 终端执行本地命令，在项目旁运行任务、查看输出。" >A native PTY terminal for local commands. Run tasks and inspect output beside your project.</p></div><figure class="feature-shot" data-kind="product"><a href="assets/terminal-en.webp" aria-label="Linvell English workspace with a working integrated terminal"><img src="assets/terminal-en.webp" width="2874" height="1722" loading="lazy" alt="Linvell English workspace with a working integrated terminal"></a><figcaption><span data-en="An integrated terminal, alongside your files." data-zh="文件与原生终端，同处一个工作区。" >An integrated terminal, alongside your files.</span></figcaption></figure></div></section><section class="tools-story container"><figure class="feature-shot" data-kind="product"><a href="assets/project-tools-en.webp" aria-label="View native project tools full size"><img src="assets/project-tools-en.webp" width="2874" height="1722" loading="lazy" alt="Linvell native Project Tools showing the sample repository's recent commits, collaborators and most changed files"></a><figcaption><span data-en="Project Tools, reporting on the real sample repository." data-zh="项目工具：查看示例仓库的真实分析结果。">Project Tools, reporting on the real sample repository.</span></figcaption></figure><div><h2 data-en="Know the project.&lt;br&gt;Keep the context." data-zh="了解项目，&lt;br&gt;保留上下文。">Know the project.<br>Keep the context.</h2><p data-en="Inspect recent commits, contributors and frequently changed files in the native Project Tools view." data-zh="在原生项目工具中查看近期提交、贡献者与经常修改的文件。">Inspect recent commits, contributors and frequently changed files in the native Project Tools view.</p></div></section>
 <section class="tagline container" aria-label="Linvell philosophy">
 <p data-en="Leave room for the idea.&lt;br&gt;Keep the tools within reach." data-zh="给想法，留一点空间。&lt;br&gt;让工具，随时触手可及。" >Leave room for the idea.<br>Keep the tools within reach.</p>
 </section>
@@ -159,4 +153,4 @@
 <div><a data-en="GitHub" data-zh="GitHub" href="https://github.com/huluxiaohuowa/Linvell" >GitHub</a><a data-en="Development" data-zh="开发进展" href="development.html" >Development</a><a data-en="Guide" data-zh="使用指南" href="guide.html" >Guide</a>
 </div>
 <p data-en="Made with Swift. Made for Mac." data-zh="用 Swift 打造，为 Mac 而生。" >Made with Swift. Made for Mac.</p>
-</footer></body></html>
+</footer><button class="motion-toggle" type="button" aria-pressed="false"><span data-en="Pause motion" data-zh="暂停动效" data-motion-label>Pause motion</span></button></body></html>

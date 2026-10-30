@@ -8,7 +8,7 @@ Published by GitHub Pages from `main` at `/`, with the custom domain in `CNAME`.
 python3 -m http.server 4090 --bind 127.0.0.1
 ```
 
-`assets/workspace-en.webp` and `assets/terminal-en.webp` are compressed captures of the installed Linvell 0.2.0 app in English, showing a public sample workspace without a control overlay. The homepage uses `home.css` and `tokens.css`; documentation pages retain `style.css`. The earlier `assets/preview.*` captures remain available. `assets/icon.png` comes from the shared Linvell gourd icon. English and Chinese copy are switched locally without analytics or accounts.
+The homepage feature captures show the installed Linvell 0.2.0 app in English: Git history, working changes, Markdown preview, rendered HTML, the terminal and Project Tools. Each uses a public sample workspace without a control overlay. The animated brand background, staggered entrances and scroll reveals respect reduced motion; a pause control stops the background. Screenshots open in a keyboard-accessible native dialog. The homepage uses `home.css` and `tokens.css`; documentation pages retain `style.css`. The earlier `assets/preview.*` captures remain available. `assets/icon.png` comes from the shared Linvell gourd icon. English and Chinese copy are switched locally without analytics or accounts.
 
 The bilingual [usage guide](guide.html) is published on the website. Repository Markdown sources: [English](docs/guide.en.md), [中文](docs/guide.zh.md). Keep the HTML and both Markdown guides aligned with the actual app release.
 
