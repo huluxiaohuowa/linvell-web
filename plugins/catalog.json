@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "name": "Linvell Examples",
+  "plugins": [
+    {
+      "id": "dev.linvell.resources",
+      "name": "Linvell Resource Example",
+      "version": "0.1.0",
+      "url": "https://linvell.fuluwa.top/plugins/linvell-resources-0.1.0.zip",
+      "sha256": "abe7592dbcdbb30ce25db3025cbd3cba8895513baddce1f401145bcee07e91a7",
+      "description": "A declarative theme, file icons and a Swift snippet. No executable program."
+    }
+  ]
+}
