@@ -1,8 +1,10 @@
 # Linvell guide
 
+Checked against Linvell 0.2.10 on October 31, 2026.
+
 ## Install and update
 
-Requires Homebrew and macOS 15.6 or later. Install the signed, notarized Universal app from the Linvell-maintained tap:
+Linvell requires macOS 15.6 or later. Choose a manual DMG installation or install Homebrew first to use the Linvell-maintained tap:
 
 ```sh
 brew install --cask huluxiaohuowa/tap/linvell
@@ -15,7 +17,7 @@ brew update
 brew upgrade --cask huluxiaohuowa/tap/linvell
 ```
 
-Homebrew installations check their Cask source and install updates through Homebrew. For manual installation, download the DMG from the homepage and use the in-app updater. Official Homebrew Cask inclusion is pending.
+Homebrew installations check their Cask source and use Homebrew to install updates. For a manual installation, download the signed release DMG from the homepage. In-app updates require an installed signed release; development/test builds have a separate identity and cannot be converted into a release through that updater. Official Homebrew Cask inclusion is pending.
 
 ## Startup workspace
 
@@ -35,7 +37,58 @@ The remote host needs a POSIX shell and Python 3 for the file protocol. Linvell 
 
 Command-N creates a new remote file. Command-S saves to the original remote path. Encoding and line endings are preserved, and a changed remote file blocks replacement. Remote editing currently allows files up to 16 MiB; local editing has a separate large-file path. Temporary working copies stay in a protected local temporary folder.
 
-This workflow provides remote files, a terminal, tasks and preview forwarding. It does not run VS Code extensions, Dev Containers or a debug-adapter host. Installed language servers on the host are supported.
+SSH workspaces provide remote files, terminals, tasks, preview forwarding and host language services. Native plugins can also run declared LSP/task/DAP programs on the SSH host. VS Code extensions and Dev Containers are not hosted. See Native plugins for installation and adapter limits.
+
+
+## Existing Agent CLIs and sessions
+
+Open Agents from the sparkle button in the activity bar or workspace toolbar, or find Agents in the command palette. Choose Codex, OpenCode, Pi, Claude Code or DeepSeek Harness. Agent Settings lets you select a discovered installation or an executable path. When no usable CLI is detected, the sidebar shows installation guidance and a link to the provider’s instructions.
+
+Use the same optional Agent home as the provider: CODEX_HOME, CLAUDE_CONFIG_DIR, PI_CODING_AGENT_DIR or DSH_HOME. Leave it empty for the default. Linvell runs the existing CLI and does not copy its login credentials. Local and SSH execution use their own installations and session stores; switching location does not transfer authentication.
+
+New Session immediately adds the open session to the left list before the first message. Its title updates during the conversation. Search saved project sessions, then double-click or choose Resume Session. Selecting a running session switches to its original terminal; a stopped saved session is resumed by its provider. A blank session that the provider has not saved remains available only in the current workspace.
+
+Open sessions have independent processes and output. Switch with the top session menu or the sidebar without stopping other sessions. Stop affects the selected session; closing the workspace asks before stopping remaining processes. Command-click terminal file links, or select a path and use Open Selected File, to open files in the owning workspace. Browsing files and switching panels preserve the running terminal.
+
+
+
+## DeepSeek Harness requires a compatible TUI
+
+The Desktop dsh CLI alone is not a terminal interface. Install a dsh-tui version compatible with your DSH runtime, then select dsh-tui in Agent Settings. An existing dsh installation with a compatible dsh-tui profile is also supported. The sidebar distinguishes a missing TUI from a missing CLI. Linvell does not bundle or automatically install TUI.
+
+Create a session without entering a task first; type your first message in the native terminal. Double-clicking a saved session uses its original ID. DSH/TUI handles the configured account or API-key model route. A prior account login does not require switching to a separate API-key route. During startup repeated clicks do not create additional DSH processes; startup failures remain visible in the terminal.
+
+The 0.2.10 local account check used DSH 0.2.1-rc.5 with upstream dsh-TUI source commit 83fcf892d49c4f4e5b05fab2936fac2241bad579. The similarly numbered npm 0.17.0 package declared different runtime compatibility. Check the supported DSH version, not only the TUI version number. Live remote-account TUI acceptance remains untested.
+
+[dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI#readme)
+
+
+## Local agents on SSH projects with Mutagen
+
+An SSH workspace offers This Mac and SSH Host execution. SSH Host runs the installed remote CLI in that project. This Mac uses an isolated local replica and requires optional Mutagen; it does not require SSHFS or macFUSE. If missing, the panel shows the installation command:
+
+```sh
+brew install mutagen-io/mutagen/mutagen
+```
+
+After installing, recheck the dependency and use Connect with Mutagen. The green capability indicator means Mutagen is installed; actual synchronization and conflicts have a separate status. Initial synchronization completes before a local Agent starts. Merely opening a project does not start synchronization.
+
+Two-way-safe synchronization preserves conflicts and pending edits. VCS metadata such as .git is excluded. Review Sync Conflicts opens both versions for comparison; it does not force an overwrite. Clean remote editor buffers refresh after Agent changes; dirty buffers retain edits and suspend auto-save when an external conflict is detected.
+
+Local CLI shell commands still run on this Mac. Use SSH explicitly for remote builds and commands: file synchronization is not remote execution. The last dependent local Agent or workspace closure stops Linvell’s synchronization process while retaining the replica. No login item is registered and Mutagen is not bundled; its remote helper may be cached under the remote user.
+
+
+
+## Install and manage native plugins
+
+Open Plugins → Manage Plugins, or Settings → Plugins → Manage Plugins. Install a local ZIP/folder, an HTTPS ZIP URL or an entry from a configured HTTPS catalog. The installed list supports search, persistent enable/disable, reload, settings/logs, explicit update, one previous-version rollback and uninstall. Browsing a catalog does not run plugin code.
+
+Review the name, ID, version, permissions and execution location before installing or enabling. Enabled managed plugins can load in other workspaces and after restart; loading a development folder is temporary. Updates are explicit. Removing a source keeps its installed plugins, and uninstall can optionally remove that plugin’s local data. External runtimes and CLI tools are installed separately.
+
+Native plugins can provide commands, views, resources, LSP language services, terminal tasks and DAP launch/internal-console integration, including SSH execution where declared. The configured tools determine available capabilities. Code plugins run with your OS access; checksums do not provide a sandbox. VSIX, Nova and Vim plugin hosting are not supported. See the plugin developer guide for adapter setup and protocol limits.
+
+[Plugins](https://linvell.fuluwa.top/plugins.html)
+
 
 ## Run, stop, logs and web preview
 

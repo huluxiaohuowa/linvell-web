@@ -1,8 +1,10 @@
 # Linvell 使用指南
 
+按 Linvell 0.2.10 于 2026 年 10 月 31 日核对。
+
 ## 安装与更新
 
-需要先安装 Homebrew，支持 macOS 15.6 及以上。通过 Linvell 自建 tap 安装已签名、公证的 Universal 应用：
+Linvell 支持 macOS 15.6 及以上。可手动安装 DMG；若使用以下 Linvell 自建 tap 命令，请先安装 Homebrew：
 
 ```sh
 brew install --cask huluxiaohuowa/tap/linvell
@@ -15,7 +17,7 @@ brew update
 brew upgrade --cask huluxiaohuowa/tap/linvell
 ```
 
-Homebrew 安装的版本检查所属 Cask 更新源，并通过 Homebrew 更新。也可从首页下载 DMG 手动安装，再使用应用内更新器。官方 Homebrew Cask 收录尚在等待中。
+Homebrew 安装检查所属 Cask 源，并通过 Homebrew 更新。手动安装请从首页下载已签名的正式版 DMG。应用内更新适用于已安装的签名正式版；开发／测试版使用独立身份，不能通过该更新器转换为正式版。官方 Homebrew Cask 收录尚在等待中。
 
 ## 启动工作区
 
@@ -35,7 +37,58 @@ Homebrew 安装的版本检查所属 Cask 更新源，并通过 Homebrew 更新�
 
 ⌘N 新建远程文件，⌘S 保存回原远程路径，保留编码与换行格式。远端文件在读取后发生改动时会阻止覆盖。远程编辑目前支持单文件最大 16 MiB；本地大文件编辑不受此远程限制。临时工作副本保存在受权限保护的本机临时目录。
 
-这套流程支持远程文件、终端、任务和预览转发；目前不运行 VS Code 扩展、Dev Containers，支持已安装的远程语言服务器，不包含调试适配器宿主。
+SSH 工作区提供远程文件、终端、任务、预览转发和主机语言服务。原生插件也可在 SSH 主机运行声明的 LSP／任务／DAP 程序。不提供 VS Code 扩展或 Dev Containers 宿主；安装与适配器边界见原生插件章节。
+
+
+## 已有 Agent CLI 与会话
+
+点击活动栏或工作区工具栏的星光按钮打开 Agents，也可在命令面板搜索 Agents。选择 Codex、OpenCode、Pi、Claude Code 或 DeepSeek Harness。在 Agent 设置中选择已识别的安装或可执行文件路径；未检测到可用 CLI 时，侧栏直接显示安装提示和对应安装指南。
+
+可选 Agent 主目录应与服务商现有配置一致，分别对应 CODEX_HOME、CLAUDE_CONFIG_DIR、PI_CODING_AGENT_DIR 或 DSH_HOME；留空使用默认配置。Linvell 运行已有 CLI，不复制登录凭据。本机和 SSH 执行分别使用各自的安装与会话存储，切换位置不会迁移认证。
+
+点击新建会话后，尚未发送消息的会话也会立即进入左侧列表，对话中标题随之更新。可搜索已保存的项目会话，双击或点击继续会话。选择运行中的会话会切回原终端；停止后的已保存会话由服务商恢复。服务商尚未保存的空白会话只在当前工作区保留。
+
+各会话有独立进程与输出。通过顶部会话菜单或侧栏切换，不会停止其他会话。停止只作用于当前会话；关闭工作区时会询问是否停止剩余进程。按住 Command 点击终端文件链接，或选中路径后点击打开选中文件，在所属工作区打开文件。浏览文件和切换面板保留运行中的终端。
+
+
+
+## DeepSeek Harness 需要兼容 TUI
+
+Desktop 自带的 dsh CLI 本身不等于终端界面。请安装与 DSH 运行时兼容的 dsh-tui，再在 Agent 设置中选择 dsh-tui；也支持带兼容 dsh-tui profile 的已有 dsh 安装。侧栏会区分缺少 TUI 与缺少 CLI。Linvell 不捆绑或自动安装 TUI。
+
+无需预填任务即可新建会话，再在原生终端中输入第一条消息。双击已保存会话使用原始 ID 恢复。账号或 API key 模型路由由 DSH／TUI 的已有配置管理；已有账号登录不意味着必须改用单独的 API key 路由。启动期间重复点击不会创建额外 DSH 进程，失败时保留终端中的错误。
+
+0.2.10 本机账号验收使用 DSH 0.2.1-rc.5 和上游 dsh-TUI 源码提交 83fcf892d49c4f4e5b05fab2936fac2241bad579。同名 npm 0.17.0 发布包的运行时兼容声明不同，应核对支持的 DSH 版本，不能只看 TUI 版本号。远程真实账号 TUI 尚未验收。
+
+[dsh-TUI](https://github.com/ccch1mneyyy/dsh-TUI#readme)
+
+
+## 通过 Mutagen 在本机使用 Agent 修改 SSH 项目
+
+SSH 工作区可选择本机或 SSH 主机执行。SSH 主机在该项目目录运行远端已安装的 CLI；本机使用隔离的本地副本，需要可选 Mutagen，不需要 SSHFS 或 macFUSE。未安装时面板显示安装命令：
+
+```sh
+brew install mutagen-io/mutagen/mutagen
+```
+
+安装后重新检测并点击使用 Mutagen 连接。绿色能力提示代表 Mutagen 已安装，实际同步和冲突另有状态。首次同步完成后才启动本机 Agent；仅打开项目不会启动同步。
+
+双向安全同步保留冲突与待写回内容，排除 .git 等版本控制元数据。查看同步冲突会打开两端版本供比较，不强制覆盖。Agent 修改后，干净的远程编辑缓冲区自动刷新；检测到外部冲突时，脏缓冲区保留编辑并暂停自动保存。
+
+本机 CLI 的 shell 命令仍在这台 Mac 执行。远程构建和命令必须明确使用 SSH；文件同步不等于远程执行。最后一个依赖同步的本机 Agent 结束或关闭工作区后，停止 Linvell 的同步进程并保留副本。不注册登录启动项，也不捆绑 Mutagen；远端用户目录可能缓存同步辅助程序。
+
+
+
+## 安装与管理原生插件
+
+打开 Plugins → Manage Plugins，或设置 → 插件 → 管理插件。可安装本地 ZIP／目录、HTTPS ZIP URL，或配置的 HTTPS 目录源中的条目。已安装列表支持搜索、持久启停、重新加载、设置／日志、显式更新、保留一个上一版本的回滚及卸载。浏览目录源不会运行插件代码。
+
+安装或启用前核对名称、ID、版本、权限和执行位置。已启用的托管插件可在其他工作区及重启后加载，开发目录加载只临时生效。更新需要显式操作。移除目录源不会卸载其插件，卸载可选择删除该插件的本地数据。外部运行时和 CLI 工具需另行安装。
+
+原生插件可提供命令、视图、资源、LSP 语言服务、终端任务和 DAP launch／内部控制台接入，并可按声明在 SSH 主机执行。可用能力取决于配置的工具。代码插件以你的系统权限运行，校验值不构成沙箱。不兼容 VSIX、Nova 或 Vim 插件宿主。适配器设置与协议边界见插件开发指南。
+
+[Plugins](https://linvell.fuluwa.top/plugins.html)
+
 
 ## 运行、停止、日志与网页预览
 
